@@ -1,0 +1,32 @@
+.characters_wrapper{
+  display: flex;
+  justify-content: center;
+}
+
+#characters_table {
+  text-align: center;
+  background-color: rgba(245, 222, 179, 0.747);
+  color: #333232;
+  border-radius: 2ex;
+  margin-right: 1rem;
+  border:1px #aaa outset;
+  border-collapse: collapse;
+  width: 98%;
+  justify-items: center;
+}
+
+#characters_table th {
+  color: #523e2e;
+  background-color: orange;
+}
+
+#characters_table td {
+  border: 1px solid black;
+  height: 1.8rem;
+  font-weight: 700;
+}
+
+#characters_table .titles {
+  border: 2px gray;
+  border-collapse: separate;
+}

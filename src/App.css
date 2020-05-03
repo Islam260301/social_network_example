@@ -4,47 +4,14 @@
       'header header'
       'menu main';
   grid-template-rows: 60px 1fr;
-  grid-template-columns: 15% 85%;
+  grid-template-columns: 15% 1fr;
   grid-gap: 10px;
-  background-image: url(/static/media/bg2.6b417c61.png);
+  background-image: url('./img/bg2.png');
   background-repeat: no-repeat;
   background-color: #2e3141;
   background-position-y: 60px;
   min-height: 100vh;
-  background-position-x: center;
-  background-size: 100vw;
+  background-position-x: right;
+  background-size: 90%;
+  height: 2000px;
 }
-
-.header {
-  background-color: #f29539;
-  width: 100vw;
-  grid-area: header;
-  padding: 11px;
-}
-
-.header .logo {
-  height: 40px;
-}
-
-.nav {
-  width: 100%;
-  grid-area: menu;
-  background-color: #f29539;
-}
-
-.nav ul {
-  list-style-type: none;
-  padding-left: 1rem;
-}
-
-.main-content {
-  grid-area: main;
-  height: 500px;
-}
-
-.main-content img {
-  width: 100%;
-}
-
-
-

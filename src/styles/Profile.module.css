@@ -1,0 +1,9 @@
+
+.main_content {
+  grid-area: main;
+  height: 500px;
+}
+
+.main_content img {
+  width: 100%;
+}

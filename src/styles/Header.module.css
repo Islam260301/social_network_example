@@ -1,0 +1,11 @@
+
+.header {
+  background-color: #f29539;
+  width: 100%;
+  grid-area: header;
+}
+
+.header .logo {
+  height: 40px;
+  padding: 11px;
+}
