@@ -5,14 +5,14 @@ import {Post} from "./Post/Post";
 export const MyPosts = (props) => {
 
   return (
-      <div className={s.myPosts}>
-        <h3>My posts</h3>
+    <div className={s.myPosts}>
+      <h3>My posts</h3>
+      <div>
         <div>
-          <div>
-            <textarea/>
-          </div>
-          <div>
-            <button>Add post</button>
+          <textarea name="addPostsText" value={props.addPostsText} onChange={props.inputChangeHandler}/>
+        </div>
+        <div>
+          <button onClick={props.addPost}>Add post</button>
           </div>
         </div>
         <div className={s.posts}>

@@ -9,7 +9,12 @@ export const Profile = (props) => {
   return (
     <div className={styles.main_content}>
       <ProfileInfo/>
-      <MyPosts posts={props.data.posts}/>
+      <MyPosts
+        posts={props.data.posts}
+        addPostsText={props.data.addPostsText}
+        addPost={props.addPost}
+        inputChangeHandler={props.inputChangeHandler}
+      />
     </div>
   );
 };

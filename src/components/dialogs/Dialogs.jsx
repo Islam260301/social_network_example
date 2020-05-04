@@ -12,6 +12,12 @@ export const Dialogs = (props) => {
       </div>
       <div className={s.messages}>
         {props.data.messagesData.map(e => <Message message={ e.message }/>)}
+        <textarea
+          name="sendMessageText"
+          value={props.sendMessageText}
+          onChange={props.inputChangeHandler}
+        />
+        <button onClick={props.sendMessage}>Send</button>
       </div>
     </div>
   )

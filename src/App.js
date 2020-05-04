@@ -8,12 +8,22 @@ import {Dialogs} from './components/dialogs/Dialogs';
 import {News} from "./components/news/News";
 import {Music} from "./components/music/Music";
 import {Settings} from "./components/settings/Settings";
+import {sendMessage} from "./redux/state";
 
 
 const App = (props) => {
 
-  const dialogs = () => <Dialogs data={props.appState.dialogPage}/>
-  const profile = () => <Profile data={props.appState.profilePage}/>
+  const dialogs = () => <Dialogs
+    data={props.appState.dialogPage}
+    sendMessage={props.sendMessage}
+    sendMessageText={props.sendMessageText}
+    inputChangeHandler={props.inputChangeHandler}
+  />
+  const profile = () => <Profile
+    data={props.appState.profilePage}
+    addPost={props.addPost}
+    inputChangeHandler={props.inputChangeHandler}
+  />
   const news = () => <News/>
   const music = () => <Music/>
   const settings = () => <Settings/>
