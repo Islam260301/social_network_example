@@ -9,3 +9,22 @@
   list-style-type: none;
   padding-left: 1rem;
 }
+
+.friend_header {
+  text-align: center;
+  margin: 4px;
+}
+
+.friends {
+  text-align: center;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.friends .friend h5 {
+margin: 7px}
+
+.friends .friend img {
+  width: 50px;
+  border-radius: 50%;
+}

@@ -1,24 +1,18 @@
 import React from "react";
-import styles from "./Navbar.module.css";
-import {NavLink} from "react-router-dom";
+import s from "./Navbar.module.css";
+import {Friend} from "./friend/Friend";
+import {NavbarMenu} from "./NavbarMenu/NavbarMenu";
 
-export const Navbar = () => {
+export const Navbar = (props) => {
+
   return (
-    <nav className={styles.nav}>
-      <div>
-        <NavLink to='/profile'>Profile</NavLink>
-        </div>
-      <div>
-        <NavLink to='/dialogs'>Messages</NavLink>
-        </div>
-      <div>
-        <NavLink to='/news'>News</NavLink>
-        </div>
-      <div>
-          <NavLink to='/music'>Music</NavLink>
-      </div>
-      <div>
-          <NavLink to='/settings'>Settings</NavLink>
+    <nav className={s.nav}>
+      <NavbarMenu menu={props.data.menu}/>
+      <h3 className={s.friend_header}>Friends</h3>
+      <div className={s.friends}>
+        {props.data.friends.map(e => {
+          return <Friend name={e.name} image={e.image}/>
+        })}
       </div>
     </nav>
   );

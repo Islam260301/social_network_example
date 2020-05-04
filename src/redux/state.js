@@ -1,3 +1,7 @@
+import friend1 from '../img/friend1.jpg';
+import friend2 from '../img/friend2.jpeg';
+import friend3 from '../img/friend3.jpg';
+
 export let state = {
   dialogPage: {
     dialogsData: [
@@ -22,5 +26,20 @@ export let state = {
       {id: 1, message: "Hi, how are you?", likesCount: 12},
       {id: 2, message: "It`s my first post", likesCount: 11},
     ],
+  },
+  navPage: {
+    friends: [
+      {name: 'Naruto', image: friend1},
+      {name: 'Luffy', image: friend2},
+      {name: 'Sophia', image: friend3}
+    ],
+    menu: [
+      {name: 'Profile', link: '/profile'},
+      {name: 'Dialogs', link: '/dialogs'},
+      {name: 'News', link: '/news'},
+      {name: 'Music', link: '/music'},
+      {name: 'Settings', link: '/settings'},
+    ]
+
   }
 }
