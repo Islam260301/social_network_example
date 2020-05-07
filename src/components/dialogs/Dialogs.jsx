@@ -19,10 +19,10 @@ export const Dialogs = (props) => {
   return (
     <div className={s.dialogs}>
       <div className={s.dialog_items}>
-        {props.data.dialogsData.map(e => <DialogItem name={ e.name } id={ e.id }/>)}
+        {dialogItems}
       </div>
       <div className={s.messages}>
-        {props.data.messagesData.map(e => <Message message={ e.message }/>)}
+        {messages}
         <textarea
           name="sendMessageText"
           id="dialogPage"
