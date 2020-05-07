@@ -10,19 +10,15 @@ import {Music} from "./components/music/Music";
 import {Settings} from "./components/settings/Settings";
 import {sendMessage} from "./redux/state";
 
-
 const App = (props) => {
 
   const dialogs = () => <Dialogs
     data={props.appState.dialogPage}
-    sendMessage={props.sendMessage}
-    sendMessageText={props.sendMessageText}
-    inputChangeHandler={props.inputChangeHandler}
+    dispatch={props.dispatch}
   />
   const profile = () => <Profile
     data={props.appState.profilePage}
-    addPost={props.addPost}
-    inputChangeHandler={props.inputChangeHandler}
+    dispatch={props.dispatch}
   />
   const news = () => <News/>
   const music = () => <Music/>
