@@ -10,7 +10,6 @@ import {Music} from "./components/music/Music";
 import {Settings} from "./components/settings/Settings";
 
 const App = (props) => {
-
   const dialogs = () => <Dialogs
     data={props.appState.dialogPage}
     dispatch={props.dispatch}
@@ -26,7 +25,7 @@ const App = (props) => {
   return (
     <div className="app_wrapper">
       <Header/>
-      <Navbar data={props.appState.navPage}/>
+      <Navbar data={props.appState.sidebarPage}/>
       <div className="app_wrapper_content">
         <Switch>
           <Route path='/dialogs' render={dialogs}/>

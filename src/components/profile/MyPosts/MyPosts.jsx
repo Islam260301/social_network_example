@@ -1,7 +1,7 @@
 import React from "react";
 import s from './MyPosts.module.css';
 import {Post} from "./Post/Post";
-import {addPostActionCreator, inputChangeHandlerActionCreator} from "../../../redux/state";
+import {addPostActionCreator, inputChangeHandlerActionCreator} from "../../../redux/actions/actionCreators";
 
 export const MyPosts = (props) => {
 
@@ -27,7 +27,6 @@ export const MyPosts = (props) => {
         <div>
           <textarea
             name="addPostsText"
-            id="profilePage"
             value={props.addPostsText}
             onChange={onChangeHandler}
           />

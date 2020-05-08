@@ -1,0 +1,3 @@
+export const ADD_NEW_POST = "ADD_NEW_POST";
+export const SEND_MESSAGE = "SEND_MESSAGE";
+export const INPUT_CHANGE_HANDLER = "INPUT_CHANGE_HANDLER";

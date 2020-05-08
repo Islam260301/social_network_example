@@ -2,7 +2,7 @@ import React from 'react';
 import s from './Dialogs.module.css';
 import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./Messages/Message";
-import {inputChangeHandlerActionCreator, sendMessageActionCreator} from "../../redux/state";
+import {inputChangeHandlerActionCreator, sendMessageActionCreator} from "../../redux/actions/actionCreators";
 
 export const Dialogs = (props) => {
 
@@ -25,7 +25,6 @@ export const Dialogs = (props) => {
         {messages}
         <textarea
           name="sendMessageText"
-          id="dialogPage"
           value={props.data.sendMessageText}
           onChange={inputChangeHandler}
         />

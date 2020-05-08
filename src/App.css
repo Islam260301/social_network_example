@@ -1,5 +1,6 @@
 .app_wrapper {
   display: grid;
+  margin: 0;
   grid-template-areas:
       'header header'
       'menu main';
