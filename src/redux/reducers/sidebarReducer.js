@@ -14,6 +14,7 @@ let initialState = {
     {name: 'News', link: '/news'},
     {name: 'Music', link: '/music'},
     {name: 'Settings', link: '/settings'},
+    {name: 'Users', link: '/users'},
   ]
 }
 
