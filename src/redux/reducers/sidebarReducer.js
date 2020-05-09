@@ -1,6 +1,6 @@
-import friend1 from "../../img/friend1.jpg";
-import friend2 from "../../img/friend2.jpeg";
-import friend3 from "../../img/friend3.jpg";
+import friend1 from "../../assets/img/friend1.jpg";
+import friend2 from "../../assets/img/friend2.jpeg";
+import friend3 from "../../assets/img/friend3.jpg";
 
 let initialState = {
   friends: [

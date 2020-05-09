@@ -1,6 +1,6 @@
 import React from "react";
 import s from "./Post.module.css";
-import avatar from "../../../../img/avatar.png";
+import avatar from "../../../../assets/img/avatar.png";
 
 export const Post = (props) => {
   const {message, likesCount} = props

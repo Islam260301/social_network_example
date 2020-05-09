@@ -1,25 +1,11 @@
-import {CHANGE_FRIENDSHIP_STATUS, SET_USERS} from "../actions/actionTypes";
-import userPhoto from "../../img/userPhoto.png"
+import {CHANGE_FRIENDSHIP_STATUS, SET_CURRENT_PAGE, SET_TOTAL_USERS_COUNT, SET_USERS} from "../actions/actionTypes";
+import userPhoto from "../../assets/img/userPhoto.png"
 
 let initialState = {
-  users: [
-    {
-      userId: 0, userPhoto: userPhoto, friendship: true,
-      fullName: "Islam", status: "I`m a boss", location: {city: "Bishkek", country: "Kyrgyzstan"}
-    },
-    {
-      userId: 1, userPhoto: userPhoto, friendship: true,
-      fullName: "Namys", status: "I`m a boss too", location: {city: "Kochkor", country: "Kyrgyzstan"}
-    },
-    {
-      userId: 2, userPhoto: userPhoto, friendship: false,
-      fullName: "Lena", status: "I`m a boss too", location: {city: "Paris", country: "France"}
-    },
-    {
-      userId: 3, userPhoto: userPhoto, friendship: true,
-      fullName: "Niya", status: "Kawai", location: {city: "Akihabara", country: "Japanese"}
-    },
-  ]
+  users: [],
+  pageSize: 5,
+  totalUsersCount: 0,
+  currentPage: 1
 }
 
 export const usersReducer = (state = initialState, action) => {
@@ -29,8 +15,11 @@ export const usersReducer = (state = initialState, action) => {
       return {
         ...state,
         users: state.users.map(u => {
-          if (u.userId === action.userId) {
-            return {...u, friendship: !u.friendship}
+          if (u.id === action.id) {
+            return {
+              ...u,
+              followed: !u.followed
+            }
           }
 
           return u;
@@ -39,7 +28,17 @@ export const usersReducer = (state = initialState, action) => {
     case SET_USERS:
       return {
         ...state,
-        users: [...state.users, ...action.users]
+        users: action.users
+      };
+    case SET_CURRENT_PAGE:
+      return {
+        ...state,
+        currentPage: action.currentPage
+      };
+      case SET_TOTAL_USERS_COUNT:
+      return {
+        ...state,
+        totalUsersCount: action.count
       };
 
     default:

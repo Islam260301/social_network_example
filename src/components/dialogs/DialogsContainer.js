@@ -1,6 +1,8 @@
-import React from 'react';
 import {Dialogs} from "./Dialogs";
-import {inputChangeHandlerActionCreator, sendMessageActionCreator} from "../../redux/actions/actionCreators";
+import {
+  inputChangeHandlerAC,
+  sendMessageAC,
+} from "../../redux/actions/actionCreators";
 import {connect} from "react-redux";
 
 
@@ -14,8 +16,8 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
   return {
-    sendMessage: () => dispatch(sendMessageActionCreator()),
-    onChangeHandler: (event) => dispatch(inputChangeHandlerActionCreator(event))
+    sendMessage: () => dispatch(sendMessageAC()),
+    onChangeHandler: (event) => dispatch(inputChangeHandlerAC(event))
   }
 }
 

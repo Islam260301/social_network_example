@@ -1,6 +1,10 @@
-import React from "react";
 import {MyPosts} from "./MyPosts";
-import {addPostActionCreator, inputChangeHandlerActionCreator} from "../../../redux/actions/actionCreators";
+import {
+  addPostAC,
+  addPostActionCreator,
+  inputChangeHandlerAC,
+  inputChangeHandlerActionCreator
+} from "../../../redux/actions/actionCreators";
 import {connect} from "react-redux";
 
 
@@ -13,8 +17,8 @@ let mapStateToProps = (state) => {
 
 let mapDispatchToProps = (dispatch) => {
   return {
-    addPost: () => dispatch(addPostActionCreator()),
-    onChangeHandler: (event) => dispatch(inputChangeHandlerActionCreator(event))
+    addPost: () => dispatch(addPostAC()),
+    onChangeHandler: (event) => dispatch(inputChangeHandlerAC(event))
   }
 }
 

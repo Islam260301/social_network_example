@@ -3,5 +3,10 @@
 }
 
 .navbar_menu a {
+  color: aliceblue;
   text-decoration: none;
+}
+
+.navbar_menu .active {
+  color: gold;
 }
