@@ -1,14 +1,16 @@
 import {
-  CHANGE_FRIENDSHIP_STATUS,
+  CHANGE_FRIENDSHIP_STATUS, CHANGE_LOAD,
   SET_CURRENT_PAGE,
   SET_TOTAL_USERS_COUNT,
-  SET_USERS} from "../actions/actionTypes";
+  SET_USERS
+} from "../actions/actionTypes";
 
 let initialState = {
   users: [],
-  pageSize: 5,
+  pageSize: 10,
   totalUsersCount: 0,
-  currentPage: 1
+  currentPage: 1,
+  inProgress: false
 }
 
 export const usersReducer = (state = initialState, action) => {
@@ -42,6 +44,11 @@ export const usersReducer = (state = initialState, action) => {
       return {
         ...state,
         totalUsersCount: action.count
+      };
+    case CHANGE_LOAD:
+      return {
+        ...state,
+        inProgress: action.loadState
       };
 
     default:

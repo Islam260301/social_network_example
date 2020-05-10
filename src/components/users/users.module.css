@@ -21,3 +21,7 @@
 .pagination .selectedPage {
     background-color: gold;
 }
+
+.loading {
+    margin: auto;
+}

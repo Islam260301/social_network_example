@@ -1,6 +1,8 @@
 import React from 'react';
 import s from './users.module.css'
 import staticUserPhoto from '../../assets/img/userPhoto.png'
+import loadImage from '../../assets/img/loadImage.gif'
+import {Preloader} from "../common/preloader/Preloader";
 
 export const Users = (props) => {
 
@@ -22,7 +24,7 @@ export const Users = (props) => {
           )
         })}
       </div>
-      {props.users.map(u => {
+      { props.inProgress ? <Preloader class={s.loading}/> : props.users.map(u => {
         return (
           <div key={u.id}>
             <span>
@@ -39,8 +41,8 @@ export const Users = (props) => {
             <span>
               <span>
                 <span>
-                  <h3>{u.name}</h3>
-                  <p>{u.status}</p>
+                  <h3>Name: {u.name}</h3>
+                  {u.status ? <p>Status: {u.status}</p> : null}
                 </span>
                 <span>
                   <h4>{"u.location.country"}</h4>
@@ -48,6 +50,7 @@ export const Users = (props) => {
                 </span>
               </span>
             </span>
+            <hr/>
           </div>
         )
       })}

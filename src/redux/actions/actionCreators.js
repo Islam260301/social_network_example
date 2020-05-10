@@ -1,6 +1,6 @@
 import {
   ADD_NEW_POST,
-  CHANGE_FRIENDSHIP_STATUS,
+  CHANGE_FRIENDSHIP_STATUS, CHANGE_LOAD,
   INPUT_CHANGE_HANDLER,
   SEND_MESSAGE,
   SET_CURRENT_PAGE, SET_TOTAL_USERS_COUNT,
@@ -31,7 +31,11 @@ export const setCurrentPageAC = (currentPage) => {
   return {type: SET_CURRENT_PAGE, currentPage}
 }
 
-export const setTotalUsersCount = (count) => {
+export const setTotalUsersCountAC = (count) => {
   return {type: SET_TOTAL_USERS_COUNT, count}
+}
+
+export const changeLoadAC = (loadState) => {
+  return {type: CHANGE_LOAD, loadState}
 }
 

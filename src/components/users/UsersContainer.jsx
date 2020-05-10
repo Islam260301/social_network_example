@@ -1,4 +1,10 @@
-import {changeFriendshipAC, setCurrentPageAC, setTotalUsersCount, setUsersAC} from "../../redux/actions/actionCreators";
+import {
+  changeFriendshipAC,
+  changeLoadAC,
+  setCurrentPageAC,
+  setTotalUsersCountAC,
+  setUsersAC
+} from "../../redux/actions/actionCreators";
 import {connect} from "react-redux";
 import React from "react";
 import * as axios from "axios";
@@ -10,25 +16,32 @@ class UsersContainer extends React.Component {
   componentDidMount() {
     axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
       .then(res => {
-          this.props.setUsers(res.data.items)
-          this.props.setTotalUsersCount(res.data.totalCount)
+        this.props.changeLoad(false)
+        this.props.setUsers(res.data.items)
+        this.props.setTotalUsersCount(res.data.totalCount)
         }
       )
+    this.props.changeLoad(true)
   }
 
   onPageChanged = (pageNumber) => {
     this.props.setCurrentPage(pageNumber)
     axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
       .then(res => {
-          this.props.setUsers(res.data.items)
+        this.props.changeLoad(false)
+        this.props.setUsers(res.data.items)
         }
       );
+    this.props.changeLoad(true)
+
   }
 
   render() {
     return (
       <div>
         <Users
+          inProgress={this.props.inProgress}
+          changeLoad={this.props.changeLoad}
           onPageChanged={this.onPageChanged}
           totalUsersCount={this.props.totalUsersCount}
           pageSize={this.props.pageSize}
@@ -47,6 +60,7 @@ let mapStateToProps = (state) => {
     pageSize: state.usersPage.pageSize,
     totalUsersCount: state.usersPage.totalUsersCount,
     currentPage: state.usersPage.currentPage,
+    inProgress: state.usersPage.inProgress
   }
 }
 
@@ -55,8 +69,8 @@ let mapDispatchToProps = (dispatch) => {
     setUsers: (users) => dispatch(setUsersAC(users)),
     changeFriendship: (id) => dispatch(changeFriendshipAC(id)),
     setCurrentPage: (pageNumber) => dispatch(setCurrentPageAC(pageNumber)),
-    setTotalUsersCount: (count) => dispatch(setTotalUsersCount(count)),
-
+    setTotalUsersCount: (count) => dispatch(setTotalUsersCountAC(count)),
+    changeLoad: (loadState) => dispatch(changeLoadAC(loadState))
   }
 }
 
