@@ -1,10 +1,6 @@
 import {MyPosts} from "./MyPosts";
-import {
-  addPostAC,
-  inputChangeHandlerAC,
-} from "../../../redux/actions/actionCreators";
+import {addPost, onChangeHandler} from "../../../redux/actions/actionCreators";
 import {connect} from "react-redux";
-
 
 let mapStateToProps = (state) => {
   return {
@@ -13,14 +9,10 @@ let mapStateToProps = (state) => {
   }
 }
 
-let mapDispatchToProps = (dispatch) => {
-  return {
-    addPost: () => dispatch(addPostAC()),
-    onChangeHandler: (event) => dispatch(inputChangeHandlerAC(event))
-  }
-}
-
-export const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts);
+export const MyPostsContainer = connect(mapStateToProps, {
+  addPost,
+  onChangeHandler
+})(MyPosts);
 
 
 

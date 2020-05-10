@@ -1,8 +1,8 @@
 import React from 'react';
 import s from './users.module.css'
 import staticUserPhoto from '../../assets/img/userPhoto.png'
-import loadImage from '../../assets/img/loadImage.gif'
 import {Preloader} from "../common/preloader/Preloader";
+import {NavLink} from "react-router-dom";
 
 export const Users = (props) => {
 
@@ -16,23 +16,25 @@ export const Users = (props) => {
     <div>
       <div className={s.pagination}>
         {pages.map(p => {
-          return(
+          return (
             <button
               key={p}
               className={props.currentPage === p ? s.selectedPage : null}
-              onClick={ () => props.onPageChanged(p)}>{p}</button>
+              onClick={() => props.onPageChanged(p)}>{p}</button>
           )
         })}
       </div>
-      { props.inProgress ? <Preloader class={s.loading}/> : props.users.map(u => {
+      {props.inProgress ? <Preloader class={s.loading}/> : props.users.map(u => {
         return (
           <div key={u.id}>
             <span>
-              <img
-                src={u.photos.small ? u.photos.small : staticUserPhoto}
-                className={s.userPhoto}
-                alt={u.fullName + "`s photo"}
-              />
+              <NavLink to={`/profile/${u.id}`}>
+                <img
+                  src={u.photos.small ? u.photos.small : staticUserPhoto}
+                  className={s.userPhoto}
+                  alt={u.fullName + "`s photo"}
+                />
+              </NavLink>
               <button
                 onClick={() => props.changeFriendship(u.id)}>
                 {u.followed ? "UnFollow" : "Follow"}
