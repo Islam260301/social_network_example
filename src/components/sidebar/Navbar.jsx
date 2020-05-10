@@ -4,7 +4,7 @@ import {Friend} from "./Friend/Friend";
 import {NavbarMenu} from "./NavbarMenu/NavbarMenu";
 
 export const Navbar = (props) => {
-  let friends = props.friends.map(e => <Friend name={e.name} image={e.image}/>)
+  let friends = props.friends.map(e => <Friend key={e.id} name={e.name} image={e.image}/>)
 
   return (
     <nav className={s.nav}>

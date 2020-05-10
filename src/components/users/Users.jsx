@@ -1,25 +1,33 @@
 import React from 'react';
 import s from './users.module.css'
-import * as axios from "axios";
 import staticUserPhoto from '../../assets/img/userPhoto.png'
 
 export const Users = (props) => {
 
-  if(props.users.length === 0) {
-    axios.get("https://social-network.samuraijs.com/api/1.0/users")
-      .then(res => {
-        props.setUsers(res.data.items)
-      });
+  let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
+  let pages = [];
+  for (let i = 1; i <= pagesCount && i <= 10; i++) {
+    pages.push(i)
   }
 
   return (
     <div>
+      <div className={s.pagination}>
+        {pages.map(p => {
+          return(
+            <button
+              key={p}
+              className={props.currentPage === p ? s.selectedPage : null}
+              onClick={ () => props.onPageChanged(p)}>{p}</button>
+          )
+        })}
+      </div>
       {props.users.map(u => {
         return (
-          <div>
+          <div key={u.id}>
             <span>
               <img
-                src={ u.photos.small ? u.photos.small : staticUserPhoto}
+                src={u.photos.small ? u.photos.small : staticUserPhoto}
                 className={s.userPhoto}
                 alt={u.fullName + "`s photo"}
               />

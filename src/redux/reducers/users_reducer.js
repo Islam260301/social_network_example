@@ -1,5 +1,8 @@
-import {CHANGE_FRIENDSHIP_STATUS, SET_CURRENT_PAGE, SET_TOTAL_USERS_COUNT, SET_USERS} from "../actions/actionTypes";
-import userPhoto from "../../assets/img/userPhoto.png"
+import {
+  CHANGE_FRIENDSHIP_STATUS,
+  SET_CURRENT_PAGE,
+  SET_TOTAL_USERS_COUNT,
+  SET_USERS} from "../actions/actionTypes";
 
 let initialState = {
   users: [],

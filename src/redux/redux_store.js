@@ -4,12 +4,12 @@ import {dialogReducer} from "./reducers/dialog_reduser";
 import {sidebarReducer} from "./reducers/sidebarReducer";
 import {usersReducer} from "./reducers/users_reducer";
 
-let rootReduser = combineReducers({
+let rootReduсer = combineReducers({
   profilePage: profileReducer,
   dialogPage: dialogReducer,
   sidebarPage: sidebarReducer,
   usersPage: usersReducer
 })
 
-export let store = createStore(rootReduser);
+export let store = createStore(rootReduсer);
 

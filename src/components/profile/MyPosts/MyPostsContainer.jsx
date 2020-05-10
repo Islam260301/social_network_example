@@ -1,9 +1,7 @@
 import {MyPosts} from "./MyPosts";
 import {
   addPostAC,
-  addPostActionCreator,
   inputChangeHandlerAC,
-  inputChangeHandlerActionCreator
 } from "../../../redux/actions/actionCreators";
 import {connect} from "react-redux";
 

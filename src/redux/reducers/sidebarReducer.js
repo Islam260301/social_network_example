@@ -4,17 +4,17 @@ import friend3 from "../../assets/img/friend3.jpg";
 
 let initialState = {
   friends: [
-    {name: 'Naruto', image: friend1},
-    {name: 'Luffy', image: friend2},
-    {name: 'Sophia', image: friend3}
+    {id: 1, name: 'Naruto', image: friend1},
+    {id: 2, name: 'Luffy', image: friend2},
+    {id: 3, name: 'Sophia', image: friend3}
   ],
   menu: [
-    {name: 'Profile', link: '/profile'},
-    {name: 'Messages', link: '/dialogs'},
-    {name: 'News', link: '/news'},
-    {name: 'Music', link: '/music'},
-    {name: 'Settings', link: '/settings'},
-    {name: 'Users', link: '/users'},
+    {id: 1, name: 'Profile', link: '/profile'},
+    {id: 2, name: 'Messages', link: '/dialogs'},
+    {id: 3, name: 'News', link: '/news'},
+    {id: 4, name: 'Music', link: '/music'},
+    {id: 5, name: 'Settings', link: '/settings'},
+    {id: 6, name: 'Users', link: '/users'},
   ]
 }
 

@@ -1,7 +1,46 @@
 import {changeFriendshipAC, setCurrentPageAC, setTotalUsersCount, setUsersAC} from "../../redux/actions/actionCreators";
 import {connect} from "react-redux";
-// import {Users} from "./Users";
-import {UsersClass} from './UsersClass'
+import React from "react";
+import * as axios from "axios";
+import {Users} from "./Users";
+
+
+class UsersContainer extends React.Component {
+
+  componentDidMount() {
+    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
+      .then(res => {
+          this.props.setUsers(res.data.items)
+          this.props.setTotalUsersCount(res.data.totalCount)
+        }
+      )
+  }
+
+  onPageChanged = (pageNumber) => {
+    this.props.setCurrentPage(pageNumber)
+    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
+      .then(res => {
+          this.props.setUsers(res.data.items)
+        }
+      );
+  }
+
+  render() {
+    return (
+      <div>
+        <Users
+          onPageChanged={this.onPageChanged}
+          totalUsersCount={this.props.totalUsersCount}
+          pageSize={this.props.pageSize}
+          users={this.props.users}
+          setUsers={this.props.setUsers}
+          currentPage={this.props.currentPage}
+        />
+      </div>
+    )
+  }
+}
+
 let mapStateToProps = (state) => {
   return {
     users: state.usersPage.users,
@@ -21,4 +60,4 @@ let mapDispatchToProps = (dispatch) => {
   }
 }
 
-export const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersClass)
+export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer)
