@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './users.module.css'
-import staticUserPhoto from '../../assets/img/userPhoto.png'
+import avatar from '../../assets/img/avatar.png'
 import {Preloader} from "../common/preloader/Preloader";
 import {NavLink} from "react-router-dom";
 
@@ -30,7 +30,7 @@ export const Users = (props) => {
             <span>
               <NavLink to={`/profile/${u.id}`}>
                 <img
-                  src={u.photos.small ? u.photos.small : staticUserPhoto}
+                  src={u.photos.small ? u.photos.small : avatar}
                   className={s.userPhoto}
                   alt={u.fullName + "`s photo"}
                 />

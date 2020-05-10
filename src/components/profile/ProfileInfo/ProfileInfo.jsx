@@ -1,14 +1,24 @@
 import React from 'react';
 import s from './ProfileInfo.module.css';
-import foto from '../../../assets/img/foto.png'
+import {Preloader} from "../../common/preloader/Preloader";
+import avatar from '../../../assets/img/avatar.png'
 
-export const ProfileInfo = () => {
-  return (
-    <div className={s.profileInfo}>
-      <div className={s.photo}>
-        <img src={foto} alt="foto"/>
+export const ProfileInfo = ({profile}) => {
+
+  if(!profile) {
+    return <Preloader/>
+  }else {
+    return (
+      <div className={s.profileInfo}>
+        <div className={s.photo}>
+          <img src={profile.photos.large ? profile.photos.large : avatar} alt="foto"/>
+        </div>
+        <h4><b>{profile.fullName}</b></h4>
+        <div>{profile.aboutMe}</div>
+        <p>lookingForAJob: {profile.lookingForAJob.toString()}</p>
+        <p><em>{profile.lookingForAJobDescription}</em></p>
+        <hr/>
       </div>
-      <div>ava + description</div>
-    </div>
-  )
+    )
+  }
 }

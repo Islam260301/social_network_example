@@ -5,6 +5,7 @@
 .navbar_menu a {
   color: aliceblue;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .navbar_menu .active {

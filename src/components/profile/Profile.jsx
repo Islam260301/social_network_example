@@ -8,7 +8,7 @@ export const Profile = (props) => {
 
   return (
     <div className={styles.main_content}>
-      <ProfileInfo/>
+      <ProfileInfo profile={props.profile}/>
       <MyPostsContainer/>
     </div>
   );

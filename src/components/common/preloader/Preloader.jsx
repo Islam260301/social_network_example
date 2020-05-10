@@ -3,6 +3,6 @@ import React from "react";
 
 export const Preloader = (props) => {
   return (
-    <img className={props.class} src={loadImage} alt="loading"/>
+    <img className={props.class ? props.class : "static_preloader"} src={loadImage} alt="loading"/>
   )
 }
