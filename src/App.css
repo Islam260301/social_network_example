@@ -4,7 +4,7 @@
   grid-template-areas:
       'header header'
       'menu main';
-  grid-template-rows: 60px 1fr;
+  grid-template-rows: 70px 1fr;
   grid-template-columns: 15% 1fr;
   grid-gap: 10px;
   /*background-image: url('./img/bg2.png');*/

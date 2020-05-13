@@ -3,7 +3,7 @@ import {
   CHANGE_FRIENDSHIP_STATUS, CHANGE_LOAD,
   INPUT_CHANGE_HANDLER,
   SEND_MESSAGE,
-  SET_CURRENT_PAGE, SET_TOTAL_USERS_COUNT, SET_USER_PROFILE,
+  SET_CURRENT_PAGE, SET_TOTAL_USERS_COUNT, SET_USER_DATA, SET_USER_PROFILE,
   SET_USERS
 } from "./actionTypes";
 
@@ -41,5 +41,9 @@ export const changeLoad = (loadState) => {
 
 export const setUserProfile = (profile) => {
   return {type: SET_USER_PROFILE, profile}
+}
+
+export const setAuthUserData = ({id, login, email}) => {
+  return {type: SET_USER_DATA, data: {id, login, email}}
 }
 

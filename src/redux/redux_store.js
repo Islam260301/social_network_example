@@ -4,12 +4,14 @@ import {profileReducer} from "./reducers/profile_reduser";
 import {dialogReducer} from "./reducers/dialog_reduser";
 import {sidebarReducer} from "./reducers/sidebarReducer";
 import {usersReducer} from "./reducers/users_reducer";
+import {authReducer} from "./reducers/auth_reducer";
 
 let rootReduсer = combineReducers({
   profilePage: profileReducer,
   dialogPage: dialogReducer,
   sidebarPage: sidebarReducer,
-  usersPage: usersReducer
+  usersPage: usersReducer,
+  auth: authReducer,
 })
 
 const composeEnhancers = composeWithDevTools({

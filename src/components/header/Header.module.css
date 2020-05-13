@@ -1,10 +1,20 @@
 .header {
   background-color: green;
-  width: 100vw;
-  grid-area: header;
   padding: 11px;
+  display: flex;
+  align-items: center;
+  grid-area: header;
+  justify-content: space-between;
 }
 
 .header .logo {
-  height: 40px;
+  height: 100%
+}
+
+.login_block {
+  float: right;
+}
+
+.login_block a {
+  color: white;
 }
