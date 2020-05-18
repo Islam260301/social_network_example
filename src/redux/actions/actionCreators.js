@@ -1,10 +1,10 @@
 import {
   ADD_NEW_POST,
-  CHANGE_FRIENDSHIP_STATUS, CHANGE_LOAD,
+  CHANGE_FRIENDSHIP_STATUS, CHANGE_LOAD, FOLLOW_USER,
   INPUT_CHANGE_HANDLER,
   SEND_MESSAGE,
   SET_CURRENT_PAGE, SET_TOTAL_USERS_COUNT, SET_USER_DATA, SET_USER_PROFILE,
-  SET_USERS
+  SET_USERS, UNFOLLOW_USER
 } from "./actionTypes";
 
 export const sendMessage = () => {
@@ -45,5 +45,13 @@ export const setUserProfile = (profile) => {
 
 export const setAuthUserData = ({id, login, email}) => {
   return {type: SET_USER_DATA, data: {id, login, email}}
+}
+
+export const follow = (userId) => {
+  return {type: FOLLOW_USER, userId}
+}
+
+export const unfollow = (userId) => {
+  return {type: UNFOLLOW_USER, userId}
 }
 

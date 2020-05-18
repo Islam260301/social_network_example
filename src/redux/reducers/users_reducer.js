@@ -1,5 +1,5 @@
 import {
-  CHANGE_FRIENDSHIP_STATUS, CHANGE_LOAD,
+  CHANGE_FRIENDSHIP_STATUS, CHANGE_LOAD, FOLLOW_USER,
   SET_CURRENT_PAGE,
   SET_TOTAL_USERS_COUNT,
   SET_USERS
@@ -16,18 +16,13 @@ let initialState = {
 export const usersReducer = (state = initialState, action) => {
 
   switch (action.type) {
-    case CHANGE_FRIENDSHIP_STATUS:
+    case FOLLOW_USER:
       return {
-        ...state,
-        users: state.users.map(u => {
-          if (u.id === action.userId) {
-            return {
-              ...u,
-              followed: !u.followed
-            }
-          }
-          return u;
-        })
+       ...state
+      }
+    case UNFOLLOW_USER:
+      return {
+        ...state
       }
     case SET_USERS:
       return {

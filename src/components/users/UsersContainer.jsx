@@ -3,18 +3,19 @@ import React from "react";
 import * as axios from "axios";
 import {Users} from "./Users";
 import {
-  changeFriendship,
-  changeLoad,
+  changeLoad, follow,
   setCurrentPage,
   setTotalUsersCount,
-  setUsers
+  setUsers, unfollow
 } from "../../redux/actions/actionCreators";
 
 
 class UsersContainer extends React.Component {
 
   componentDidMount() {
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
+    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`, {
+      withCredentials: true
+    })
       .then(res => {
           this.props.changeLoad(false)
           this.props.setUsers(res.data.items)
@@ -26,7 +27,9 @@ class UsersContainer extends React.Component {
 
   onPageChanged = (pageNumber) => {
     this.props.setCurrentPage(pageNumber)
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
+    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`, {
+      withCredentials: true
+    })
       .then(res => {
           this.props.changeLoad(false)
           this.props.setUsers(res.data.items)
@@ -47,7 +50,8 @@ class UsersContainer extends React.Component {
           changeLoad={this.props.changeLoad}
           onPageChanged={this.onPageChanged}
           setUsers={this.props.setUsers}
-          changeFriendship={this.props.changeFriendship}
+          follow={this.props.follow}
+          unfollow={this.props.unfollow}
           setCurrentPage={this.props.setCurrentPage}
           setTotalUsersCount={this.props.setTotalUsersCount}
         />
@@ -68,7 +72,8 @@ let mapStateToProps = (state) => {
 
 export default connect(mapStateToProps, {
   setUsers,
-  changeFriendship,
+  follow,
+  unfollow,
   setCurrentPage,
   setTotalUsersCount,
   changeLoad

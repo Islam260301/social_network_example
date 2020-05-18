@@ -8,5 +8,7 @@ export const SET_TOTAL_USERS_COUNT = "SET_TOTAL_USERS_COUNT";
 export const CHANGE_LOAD = "CHANGE_LOAD";
 export const SET_USER_PROFILE = "SET_USER_PROFILE";
 export const SET_USER_DATA = "SET_USER_DATA";
+export const FOLLOW_USER = "FOLLOW_USER";
+export const UNFOLLOW_USER = "UNFOLLOW_USER";
 
 

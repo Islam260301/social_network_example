@@ -35,10 +35,8 @@ export const Users = (props) => {
                   alt={u.fullName + "`s photo"}
                 />
               </NavLink>
-              <button
-                onClick={() => props.changeFriendship(u.id)}>
-                {u.followed ? "UnFollow" : "Follow"}
-              </button>
+              {u.followed ? <button onClick={() => props.unfollow(u.id)}></button> :
+                <button onClick={() => props.follow(u.id)}></button>}
             </span>
             <span>
               <span>
