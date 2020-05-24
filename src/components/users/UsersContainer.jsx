@@ -1,41 +1,25 @@
 import {connect} from "react-redux";
 import React from "react";
-import * as axios from "axios";
 import {Users} from "./Users";
 import {
-  changeLoad, follow,
+  follow,
   setCurrentPage,
   setTotalUsersCount,
-  setUsers, unfollow
+  setUsers, toggleFollowingInProgress,
+  toggleIsFetching, unFollow
 } from "../../redux/actions/actionCreators";
+import {followThunk, getUsersThunk, unFollowThunk} from "../../redux/reducers/users_reducer";
 
 
 class UsersContainer extends React.Component {
 
   componentDidMount() {
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`, {
-      withCredentials: true
-    })
-      .then(res => {
-          this.props.changeLoad(false)
-          this.props.setUsers(res.data.items)
-          this.props.setTotalUsersCount(res.data.totalCount)
-        }
-      )
-    this.props.changeLoad(true)
+    this.props.getUsersThunk(this.props.currentPage, this.props.pageSize)
   }
 
   onPageChanged = (pageNumber) => {
     this.props.setCurrentPage(pageNumber)
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`, {
-      withCredentials: true
-    })
-      .then(res => {
-          this.props.changeLoad(false)
-          this.props.setUsers(res.data.items)
-        }
-      );
-    this.props.changeLoad(true)
+    this.props.getUsersThunk(pageNumber, this.props.pageSize)
   }
 
   render() {
@@ -47,13 +31,15 @@ class UsersContainer extends React.Component {
           totalUsersCount={this.props.totalUsersCount}
           currentPage={this.props.currentPage}
           inProgress={this.props.inProgress}
-          changeLoad={this.props.changeLoad}
+          toggleIsFetching={this.props.toggleIsFetching}
           onPageChanged={this.onPageChanged}
           setUsers={this.props.setUsers}
-          follow={this.props.follow}
-          unfollow={this.props.unfollow}
+          follow={this.props.followThunk}
+          unFollow={this.props.unFollowThunk}
           setCurrentPage={this.props.setCurrentPage}
           setTotalUsersCount={this.props.setTotalUsersCount}
+          toggleFollowing={this.props.toggleFollowingInProgress}
+          isFollowing={this.props.isFollowing}
         />
       </div>
     )
@@ -66,15 +52,18 @@ let mapStateToProps = (state) => {
     pageSize: state.usersPage.pageSize,
     totalUsersCount: state.usersPage.totalUsersCount,
     currentPage: state.usersPage.currentPage,
-    inProgress: state.usersPage.inProgress
+    inProgress: state.usersPage.inProgress,
+    isFollowing: state.usersPage.isFollowing
   }
 }
 
 export default connect(mapStateToProps, {
   setUsers,
   follow,
-  unfollow,
+  unFollow,
   setCurrentPage,
-  setTotalUsersCount,
-  changeLoad
+  toggleFollowingInProgress,
+  getUsersThunk,
+  followThunk,
+  unFollowThunk
 })(UsersContainer)

@@ -31,7 +31,6 @@ export const profileReducer = (state= initialState, action) => {
         addPostsText: action.event.target.value
       };
     case SET_USER_PROFILE:
-
       return {
         ...state,
         profile: action.profile

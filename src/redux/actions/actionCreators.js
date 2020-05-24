@@ -1,10 +1,10 @@
 import {
   ADD_NEW_POST,
-  CHANGE_FRIENDSHIP_STATUS, CHANGE_LOAD, FOLLOW_USER,
+  CHANGE_LOAD, FOLLOW_USER,
   INPUT_CHANGE_HANDLER,
   SEND_MESSAGE,
   SET_CURRENT_PAGE, SET_TOTAL_USERS_COUNT, SET_USER_DATA, SET_USER_PROFILE,
-  SET_USERS, UNFOLLOW_USER
+  SET_USERS, TOGGLEFOLLOWING, UNFOLLOW_USER
 } from "./actionTypes";
 
 export const sendMessage = () => {
@@ -19,10 +19,6 @@ export const addPost = () => {
   return {type: ADD_NEW_POST}
 }
 
-export const changeFriendship = (userId) => {
-  return {type: CHANGE_FRIENDSHIP_STATUS, userId}
-}
-
 export const setUsers = (users) => {
   return {type: SET_USERS, users}
 }
@@ -35,7 +31,7 @@ export const setTotalUsersCount = (count) => {
   return {type: SET_TOTAL_USERS_COUNT, count}
 }
 
-export const changeLoad = (loadState) => {
+export const toggleIsFetching = (loadState) => {
   return {type: CHANGE_LOAD, loadState}
 }
 
@@ -51,7 +47,11 @@ export const follow = (userId) => {
   return {type: FOLLOW_USER, userId}
 }
 
-export const unfollow = (userId) => {
+export const unFollow = (userId) => {
   return {type: UNFOLLOW_USER, userId}
+}
+
+export const toggleFollowingInProgress = (isInProgress) => {
+  return {type: TOGGLEFOLLOWING, isInProgress}
 }
 

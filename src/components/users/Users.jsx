@@ -3,6 +3,8 @@ import s from './users.module.css'
 import avatar from '../../assets/img/avatar.png'
 import {Preloader} from "../common/preloader/Preloader";
 import {NavLink} from "react-router-dom";
+import {followReq, unFollowReq} from "../../api/api";
+import {followThunk, unFollowThunk} from "../../redux/reducers/users_reducer";
 
 export const Users = (props) => {
 
@@ -12,19 +14,22 @@ export const Users = (props) => {
     pages.push(i)
   }
 
+  let pagination = <div className={s.pagination}>
+    {pages.map(p => {
+      return (
+        <button
+          key={p}
+          className={props.currentPage === p ? s.selectedPage : null}
+          onClick={() => props.onPageChanged(p)}>{p}
+        </button>
+      )
+    })}
+  </div>
+
   return (
     <div>
-      <div className={s.pagination}>
-        {pages.map(p => {
-          return (
-            <button
-              key={p}
-              className={props.currentPage === p ? s.selectedPage : null}
-              onClick={() => props.onPageChanged(p)}>{p}</button>
-          )
-        })}
-      </div>
-      {props.inProgress ? <Preloader class={s.loading}/> : props.users.map(u => {
+      {pagination}
+      {props.inProgress ? <Preloader class={s.loading} /> : props.users.map(u => {
         return (
           <div key={u.id}>
             <span>
@@ -35,8 +40,12 @@ export const Users = (props) => {
                   alt={u.fullName + "`s photo"}
                 />
               </NavLink>
-              {u.followed ? <button onClick={() => props.unfollow(u.id)}></button> :
-                <button onClick={() => props.follow(u.id)}></button>}
+              {u.followed ? <button disabled={props.isFollowing} onClick={() => {
+                  props.unFollow(u.id)
+                }}>UnFollow</button> :
+                <button disabled={props.isFollowing} onClick={() => {
+                  props.follow(u.id)
+                }}>Follow</button>}
             </span>
             <span>
               <span>
@@ -50,10 +59,11 @@ export const Users = (props) => {
                 </span>
               </span>
             </span>
-            <hr/>
+            <hr />
           </div>
         )
       })}
+      {pagination}
       <button onClick={props.setUsers}>Show More</button>
     </div>
   )
