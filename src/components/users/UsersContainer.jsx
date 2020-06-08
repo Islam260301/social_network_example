@@ -4,12 +4,12 @@ import {Users} from "./Users";
 import {
   follow,
   setCurrentPage,
-  setTotalUsersCount,
   setUsers, toggleFollowingInProgress,
-  toggleIsFetching, unFollow
+  unFollow
 } from "../../redux/actions/actionCreators";
 import {followThunk, getUsersThunk, unFollowThunk} from "../../redux/reducers/users_reducer";
-
+import {compose} from "redux";
+import {withAuthRedirect} from "../hoc/withAuthRedirect";
 
 class UsersContainer extends React.Component {
 
@@ -31,14 +31,10 @@ class UsersContainer extends React.Component {
           totalUsersCount={this.props.totalUsersCount}
           currentPage={this.props.currentPage}
           inProgress={this.props.inProgress}
-          toggleIsFetching={this.props.toggleIsFetching}
           onPageChanged={this.onPageChanged}
           setUsers={this.props.setUsers}
           follow={this.props.followThunk}
           unFollow={this.props.unFollowThunk}
-          setCurrentPage={this.props.setCurrentPage}
-          setTotalUsersCount={this.props.setTotalUsersCount}
-          toggleFollowing={this.props.toggleFollowingInProgress}
           isFollowing={this.props.isFollowing}
         />
       </div>
@@ -57,7 +53,9 @@ let mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {
+export default compose(
+  // withAuthRedirect,
+  connect(mapStateToProps, {
   setUsers,
   follow,
   unFollow,
@@ -66,4 +64,4 @@ export default connect(mapStateToProps, {
   getUsersThunk,
   followThunk,
   unFollowThunk
-})(UsersContainer)
+}))(UsersContainer)

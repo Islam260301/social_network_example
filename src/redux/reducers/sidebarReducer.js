@@ -8,7 +8,7 @@ let initialState = {
     {id: 2, name: 'Luffy', image: friend2},
     {id: 3, name: 'Sophia', image: friend3}
   ],
-  menu: [
+  menu_items: [
     {id: 1, name: 'Profile', link: '/profile'},
     {id: 2, name: 'Messages', link: '/dialogs'},
     {id: 3, name: 'News', link: '/news'},

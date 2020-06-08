@@ -1,22 +1,22 @@
 import {
   ADD_NEW_POST,
   CHANGE_LOAD, FOLLOW_USER,
-  INPUT_CHANGE_HANDLER,
+  INPUT_CHANGE_HANDLER, LOGIN,
   SEND_MESSAGE,
-  SET_CURRENT_PAGE, SET_TOTAL_USERS_COUNT, SET_USER_DATA, SET_USER_PROFILE,
-  SET_USERS, TOGGLEFOLLOWING, UNFOLLOW_USER
+  SET_CURRENT_PAGE, SET_STATUS, SET_TOTAL_USERS_COUNT, SET_USER_DATA, SET_USER_PROFILE,
+  SET_USERS, TOGGLEFOLLOWING, UNFOLLOW_USER, UPDATE_STATUS
 } from "./actionTypes";
 
-export const sendMessage = () => {
-  return {type: SEND_MESSAGE}
+export const sendMessage = (sendMessageText) => {
+  return {type: SEND_MESSAGE, sendMessageText}
 }
 
 export const onChangeHandler = (event) => {
   return {type: INPUT_CHANGE_HANDLER, event}
 }
 
-export const addPost = () => {
-  return {type: ADD_NEW_POST}
+export const addPost = (addPostsText) => {
+  return {type: ADD_NEW_POST, addPostsText}
 }
 
 export const setUsers = (users) => {
@@ -53,5 +53,17 @@ export const unFollow = (userId) => {
 
 export const toggleFollowingInProgress = (isInProgress) => {
   return {type: TOGGLEFOLLOWING, isInProgress}
+}
+
+export const setStatus = (statusText) => {
+  return {type: SET_STATUS, statusText}
+}
+
+export const updateStatusAC = (statusText) => {
+  return {type: UPDATE_STATUS, statusText}
+}
+
+export const loginAC = (usersData) => {
+  return {type: LOGIN, usersData}
 }
 

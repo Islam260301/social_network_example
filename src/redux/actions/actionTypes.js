@@ -10,5 +10,8 @@ export const SET_USER_DATA = "SET_USER_DATA";
 export const FOLLOW_USER = "FOLLOW_USER";
 export const UNFOLLOW_USER = "UNFOLLOW_USER";
 export const TOGGLEFOLLOWING = "TOGGLEFOLLOWING";
+export const SET_STATUS = "SET_STATUS";
+export const UPDATE_STATUS = "UPDATE_STATUS";
+export const LOGIN = "LOGIN";
 
 

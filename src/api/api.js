@@ -24,11 +24,26 @@ export const followReq = (userId) => {
 }
 
 export const unFollowReq = (userId) => {
-  return instance.delete(`/follow/${userId}`, {})
+  return instance.delete(`/follow/${userId}`)
     .then(res => res.data)
 }
 
 export const getProfileReq = (userId) => {
-  return instance.get(`/profile/${userId}`, {})
+  return instance.get(`/profile/${userId}`)
+    .then(res => res.data)
+}
+
+export const getStatus = (userId) => {
+  return instance.get(`/profile/status/${userId}`)
+    .then(res => res.data)
+}
+
+export const updateStatus = (statusText) => {
+  return instance.put(`/profile/status/`, {status: statusText})
+    .then(res => res.data)
+}
+
+export const loginReq = (formData) => {
+  return instance.post(`/auth/login/`, formData)
     .then(res => res.data)
 }

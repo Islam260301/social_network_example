@@ -8,7 +8,7 @@ export const Navbar = (props) => {
 
   return (
     <nav className={s.nav}>
-      <NavbarMenu menu={props.menu}/>
+      <NavbarMenu menu_items={props.menu_items}/>
       <h3 className={s.friend_header}>Friends</h3>
       <div className={s.friends}>
         {friends}

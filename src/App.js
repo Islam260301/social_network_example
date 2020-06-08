@@ -4,11 +4,12 @@ import {Route, Switch} from 'react-router-dom';
 import {News} from "./components/news/News";
 import {Music} from "./components/music/Music";
 import {Settings} from "./components/settings/Settings";
-import {DialogsContainer} from "./components/dialogs/DialogsContainer";
+import DialogsContainer from "./components/dialogs/DialogsContainer";
 import {NavbarContainer} from "./components/sidebar/NavbarContainer";
 import UsersContainer from "./components/users/UsersContainer";
 import ProfileContainer from "./components/profile/ProfileContainer";
 import HeaderContainer from "./components/header/HeaderContainer";
+import LoginContainer from "./components/login/LoginContainer";
 
 export const App = () => {
 
@@ -24,6 +25,7 @@ export const App = () => {
           <Route path='/news' render={() => <News/>}/>
           <Route path='/music' render={() => <Music/>}/>
           <Route path='/settings' render={() => <Settings/>}/>
+          <Route path='/login' render={() => <LoginContainer/>}/>
         </Switch>
       </div>
     </div>

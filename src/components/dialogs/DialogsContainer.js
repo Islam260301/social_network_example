@@ -1,17 +1,40 @@
 import {Dialogs} from "./Dialogs";
-import {onChangeHandler, sendMessage} from "../../redux/actions/actionCreators";
+import {sendMessage} from "../../redux/actions/actionCreators";
 import {connect} from "react-redux";
+import {compose} from "redux";
+import React from "react";
+import {reset} from "redux-form";
 
 
-let mapStateToProps = (state) => {
-  return{
-    dialogsData: state.dialogPage.dialogsData,
-    messagesData: state.dialogPage.messagesData,
-    sendMessageText: state.dialogPage.sendMessageText
+class DialogsContainer extends React.Component {
+
+  sendMessage = (values) => {
+    this.props.sendMessage(values.sendMessageText)
+    this.props.reset("dialogs")
+  }
+
+  render() {
+    return (
+      <Dialogs
+        sendMessage={this.sendMessage}
+        dialogsData={this.props.dialogsData}
+        messagesData={this.props.messagesData}
+      />
+    )
   }
 }
 
-export const DialogsContainer = connect(mapStateToProps, {
-  sendMessage,
-  onChangeHandler
-})(Dialogs)
+let mapStateToProps = (state) => {
+  return {
+    dialogsData: state.dialogPage.dialogsData,
+    messagesData: state.dialogPage.messagesData,
+  }
+}
+
+export default compose(
+  // withAuthRedirect,
+  connect(mapStateToProps, {
+    sendMessage,
+    reset
+  })
+)(DialogsContainer)

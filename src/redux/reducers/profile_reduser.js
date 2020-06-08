@@ -1,4 +1,6 @@
-import {ADD_NEW_POST, INPUT_CHANGE_HANDLER, SET_USER_PROFILE} from "../actions/actionTypes";
+import {ADD_NEW_POST, INPUT_CHANGE_HANDLER, SET_STATUS, SET_USER_PROFILE} from "../actions/actionTypes";
+import {getProfileReq, getStatus, updateStatus} from "../../api/api";
+import {setStatus, setUserProfile, updateStatusAC} from "../actions/actionCreators";
 
 let initialState = {
   posts: [
@@ -6,7 +8,7 @@ let initialState = {
     {id: 2, message: "It`s my first post", likesCount: 11},
   ],
   profile: null,
-  addPostsText: ""
+  status: ""
 }
 
 export const profileReducer = (state= initialState, action) => {
@@ -15,7 +17,7 @@ export const profileReducer = (state= initialState, action) => {
     case ADD_NEW_POST:
       let newPost = {
         id: state.posts[state.posts.length - 1].id + 1,
-        message: state.addPostsText,
+        message: action.addPostsText,
         likesCount: 0
       }
 
@@ -35,8 +37,31 @@ export const profileReducer = (state= initialState, action) => {
         ...state,
         profile: action.profile
       };
+    case SET_STATUS:
+      return {
+        ...state,
+        status: action.statusText
+      };
 
     default:
       return state;
   }
+}
+
+export const getUserProfileThunk = (userId) => (dispatch) => {
+  getProfileReq(userId).then(data => {
+    dispatch(setUserProfile(data))
+  })
+}
+
+export const getStatusThunk = (userId) => (dispatch) => {
+  getStatus(userId).then(data => {
+    dispatch(setStatus(data))
+  })
+}
+
+export const updateStatusThunk = (statusText) => (dispatch) => {
+  updateStatus(statusText).then(data => {
+    dispatch(updateStatusAC(data))
+  })
 }

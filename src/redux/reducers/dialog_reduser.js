@@ -17,7 +17,6 @@ let initialState = {
     {id: 5, message: "I think WebStorm more comfortable than VS Code"},
     {id: 6, message: "Yes. (_::_)"},
   ],
-  sendMessageText: ""
 }
 
 export const dialogReducer = (state = initialState, action) => {
@@ -26,7 +25,7 @@ export const dialogReducer = (state = initialState, action) => {
     case SEND_MESSAGE:
       let newMessage = {
         id: state.messagesData[state.messagesData.length - 1].id + 1,
-        message: state.sendMessageText
+        message: action.sendMessageText
       }
       return {
         ...state,

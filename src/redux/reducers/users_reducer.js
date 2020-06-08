@@ -72,9 +72,7 @@ export const getUsersThunk = (currentPage, pageSize) => {
   return (dispatch) => {
     dispatch(toggleIsFetching(true));
     let users = getUsersReq(currentPage, pageSize);
-    debugger
     users.then(data => {
-      debugger
       dispatch(toggleIsFetching(false));
       dispatch(setUsers(data.items));
       dispatch(setTotalUsersCount(data.totalCount));

@@ -2,8 +2,9 @@ import React from 'react';
 import s from './ProfileInfo.module.css';
 import {Preloader} from "../../common/preloader/Preloader";
 import avatar from '../../../assets/img/avatar.png'
+import {ProfileEditStatus} from "./ProfileEditStatus";
 
-export const ProfileInfo = ({profile}) => {
+export const ProfileInfo = ({profile, status, updateStatus}) => {
 
   if(!profile) {
     return <Preloader/>
@@ -14,7 +15,8 @@ export const ProfileInfo = ({profile}) => {
           <img src={profile.photos.large ? profile.photos.large : avatar} alt="foto"/>
         </div>
         <h4><b>{profile.fullName}</b></h4>
-        <div>{profile.aboutMe}</div>
+        <div>{profile.aboutMe}</div>4
+        <ProfileEditStatus status={status} updateStatus={updateStatus}/>
         <p>lookingForAJob: {profile.lookingForAJob.toString()}</p>
         <p><em>{profile.lookingForAJobDescription}</em></p>
         <hr/>

@@ -1,6 +1,8 @@
 import {
   SET_USER_DATA
 } from "../actions/actionTypes";
+import {authMeReq, loginReq} from "../../api/api";
+import {loginAC, setAuthUserData} from "../actions/actionCreators";
 
 let initialState = {
   id: null,
@@ -22,4 +24,20 @@ export const authReducer = (state = initialState, action) => {
     default:
       return state;
   }
+}
+
+export const getAuthUserDataThunk = () => (dispatch) => {
+  authMeReq().then(data => {
+    if (data.resultCode === 0) {
+      dispatch(setAuthUserData(data.data))  // id, login, email
+    }
+  })
+}
+
+export const loginThunk = (formData) => (dispatch) => {
+  loginReq(formData).then(data => {
+    if (data.resultCode === 0) {
+      dispatch(loginAC(data.data))
+    }
+  })
 }

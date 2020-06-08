@@ -1,9 +1,9 @@
 import React, {Component} from "react";
 import {Profile} from "./Profile";
 import {connect} from "react-redux";
-import {setUserProfile} from "../../redux/actions/actionCreators";
 import {withRouter} from "react-router-dom";
-import {getProfileReq} from "../../api/api";
+import {getStatusThunk, getUserProfileThunk, updateStatusThunk} from "../../redux/reducers/profile_reduser";
+import {compose} from "redux";
 
 
 class ProfileContainer extends Component {
@@ -13,9 +13,8 @@ class ProfileContainer extends Component {
     if (!userId) {
       userId = 2
     }
-    getProfileReq(userId).then(data => {
-      this.props.setUserProfile(data)
-    })
+    this.props.getUserProfileThunk(userId)
+    this.props.getStatusThunk(userId)
   }
 
   render() {
@@ -23,6 +22,8 @@ class ProfileContainer extends Component {
       <Profile
         {...this.props}
         profile={this.props.profile}
+        status={this.props.status}
+        updateStatus={this.props.updateStatusThunk}
       />
     );
   }
@@ -30,11 +31,13 @@ class ProfileContainer extends Component {
 
 let mapStateToProps = (state) => {
   return {
-    profile: state.profilePage.profile
+    profile: state.profilePage.profile,
+    status: state.profilePage.status
   }
 }
 
-let withUrlData = withRouter(ProfileContainer)
-export default connect(mapStateToProps, {
-  setUserProfile
-})(withUrlData)
+export default compose(
+  withRouter,
+  // withAuthRedirect,
+  connect(mapStateToProps, {getUserProfileThunk, getStatusThunk, updateStatusThunk})
+)(ProfileContainer)
