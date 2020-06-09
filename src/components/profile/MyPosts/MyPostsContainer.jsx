@@ -16,7 +16,6 @@ class MyPostsContainer extends React.Component {
       <MyPosts
         onSubmitAddPost={this.onSubmitAddPost}
         posts={this.props.posts}
-        addPostsText={this.props.addPostsText}
       />
     )
   }
@@ -25,14 +24,10 @@ class MyPostsContainer extends React.Component {
 let mapStateToProps = (state) => {
   return {
     posts: state.profilePage.posts,
-    addPostsText: state.profilePage.addPostsText
   }
 }
 
-export default connect(mapStateToProps, {
-  reset,
-  addPost,
-})(MyPostsContainer);
+export default connect(mapStateToProps, {reset, addPost,})(MyPostsContainer);
 
 
 

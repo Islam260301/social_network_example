@@ -9,7 +9,7 @@ import {reset} from "redux-form";
 class DialogsContainer extends React.Component {
 
   sendMessage = (values) => {
-    this.props.sendMessage(values.sendMessageText)
+    this.props.sendMessage(values.sendMessageText) //made with redux-form
     this.props.reset("dialogs")
   }
 

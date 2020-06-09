@@ -1,4 +1,4 @@
-import {INPUT_CHANGE_HANDLER, SEND_MESSAGE} from "../actions/actionTypes";
+import {SEND_MESSAGE} from "../actions/actionTypes";
 
 let initialState = {
   dialogsData: [
@@ -29,16 +29,8 @@ export const dialogReducer = (state = initialState, action) => {
       }
       return {
         ...state,
-        sendMessageText: "",
         messagesData: [...state.messagesData, newMessage]
       }
-
-    case INPUT_CHANGE_HANDLER:
-      return {
-        ...state,
-        sendMessageText: action.event.target.value
-      }
-
     default:
       break
   }

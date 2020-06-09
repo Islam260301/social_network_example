@@ -1,7 +1,7 @@
 import {
   ADD_NEW_POST,
   CHANGE_LOAD, FOLLOW_USER,
-  INPUT_CHANGE_HANDLER, LOGIN,
+  LOGIN,
   SEND_MESSAGE,
   SET_CURRENT_PAGE, SET_STATUS, SET_TOTAL_USERS_COUNT, SET_USER_DATA, SET_USER_PROFILE,
   SET_USERS, TOGGLEFOLLOWING, UNFOLLOW_USER, UPDATE_STATUS
@@ -9,10 +9,6 @@ import {
 
 export const sendMessage = (sendMessageText) => {
   return {type: SEND_MESSAGE, sendMessageText}
-}
-
-export const onChangeHandler = (event) => {
-  return {type: INPUT_CHANGE_HANDLER, event}
 }
 
 export const addPost = (addPostsText) => {

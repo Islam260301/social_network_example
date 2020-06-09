@@ -1,4 +1,4 @@
-import {ADD_NEW_POST, INPUT_CHANGE_HANDLER, SET_STATUS, SET_USER_PROFILE} from "../actions/actionTypes";
+import {ADD_NEW_POST, SET_STATUS, SET_USER_PROFILE} from "../actions/actionTypes";
 import {getProfileReq, getStatus, updateStatus} from "../../api/api";
 import {setStatus, setUserProfile, updateStatusAC} from "../actions/actionCreators";
 
@@ -24,13 +24,6 @@ export const profileReducer = (state= initialState, action) => {
       return {
         ...state,
         posts: [...state.posts, newPost],
-        addPostsText: ""
-      };
-    case INPUT_CHANGE_HANDLER:
-
-      return {
-        ...state,
-        addPostsText: action.event.target.value
       };
     case SET_USER_PROFILE:
       return {
