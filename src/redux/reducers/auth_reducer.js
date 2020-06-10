@@ -1,8 +1,9 @@
 import {
+  LOGIN,
   SET_USER_DATA
 } from "../actions/actionTypes";
-import {authMeReq, loginReq} from "../../api/api";
-import {loginAC, setAuthUserData} from "../actions/actionCreators";
+import {authMeReq, loginReq, logoutReq} from "../../api/api";
+import {loginAC, logoutAC, setAuthUserData} from "../actions/actionCreators";
 
 let initialState = {
   id: null,
@@ -34,10 +35,18 @@ export const getAuthUserDataThunk = () => (dispatch) => {
   })
 }
 
-export const loginThunk = (formData) => (dispatch) => {
-  loginReq(formData).then(data => {
+export const loginThunk = (email, password, rememberMe) => (dispatch) => {
+  loginReq(email, password, rememberMe).then(data => {
     if (data.resultCode === 0) {
-      dispatch(loginAC(data.data))
+      dispatch(loginAC(data.data.userId))
+    }
+  })
+}
+
+export const logoutThunk = () => (dispatch) => {
+  logoutReq().then(data => {
+    if (data.resultCode === 0) {
+      dispatch(logoutAC())
     }
   })
 }

@@ -16,6 +16,7 @@ class HeaderContainer extends Component {
         id={this.props.id}
         email={this.props.email}
         login={this.props.login}
+        logout={this.props.logoutThunk}
       />
     )
   }
@@ -31,5 +32,6 @@ let mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, {
-  getAuthUserDataThunk
+  getAuthUserDataThunk,
+  logoutThunk
 })(HeaderContainer);

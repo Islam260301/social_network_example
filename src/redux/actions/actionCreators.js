@@ -1,7 +1,7 @@
 import {
   ADD_NEW_POST,
   CHANGE_LOAD, FOLLOW_USER,
-  LOGIN,
+  LOGIN, LOGOUT,
   SEND_MESSAGE,
   SET_CURRENT_PAGE, SET_STATUS, SET_TOTAL_USERS_COUNT, SET_USER_DATA, SET_USER_PROFILE,
   SET_USERS, TOGGLEFOLLOWING, UNFOLLOW_USER, UPDATE_STATUS
@@ -61,5 +61,9 @@ export const updateStatusAC = (statusText) => {
 
 export const loginAC = (usersData) => {
   return {type: LOGIN, usersData}
+}
+
+export const logoutAC = () => {
+  return {type: LOGOUT}
 }
 

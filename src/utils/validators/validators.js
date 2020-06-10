@@ -5,7 +5,14 @@ export const requiredField = (value) => {
 }
 
 export const maxLengthCreator = (maxLength) => (value) => {
-  if(value.length > maxLength ) return `Max length is ${maxLength} symbols`;
+  return value.length > maxLength ? `Max length is ${maxLength} symbols` : undefined
+}
 
-  return undefined;
+export const minLengthCreator = (minLength) => (value) => {
+  return value && value.length < minLength ? `Must be ${minLength} characters or more` : undefined
+}
+
+export const email = value => {
+  return value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)
+    ? 'Invalid email address' : undefined
 }

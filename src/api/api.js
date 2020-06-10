@@ -43,7 +43,12 @@ export const updateStatus = (statusText) => {
     .then(res => res.data)
 }
 
-export const loginReq = (formData) => {
-  return instance.post(`/auth/login/`, formData)
+export const loginReq = (email, password, rememberMe = false) => {
+  return instance.post(`/auth/login/`, {email, password, rememberMe})
+    .then(res => res.data)
+}
+
+export const logoutReq = () => {
+  return instance.delete(`/auth/login`)
     .then(res => res.data)
 }
