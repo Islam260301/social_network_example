@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import {compose} from "redux";
 import React from "react";
 import {reset} from "redux-form";
+import {withAuthRedirect} from "../hoc/withAuthRedirect";
 
 
 class DialogsContainer extends React.Component {
@@ -32,7 +33,7 @@ let mapStateToProps = (state) => {
 }
 
 export default compose(
-  // withAuthRedirect,
+  withAuthRedirect,
   connect(mapStateToProps, {
     sendMessage,
     reset

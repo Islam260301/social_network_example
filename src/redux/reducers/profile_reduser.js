@@ -7,7 +7,10 @@ let initialState = {
     {id: 1, message: "Hi, how are you?", likesCount: 12},
     {id: 2, message: "It`s my first post", likesCount: 11},
   ],
-  profile: null,
+  profile: {
+    fullName: null,
+    userId: null
+  },
   status: ""
 }
 
@@ -28,7 +31,7 @@ export const profileReducer = (state= initialState, action) => {
     case SET_USER_PROFILE:
       return {
         ...state,
-        profile: action.profile
+        profile: {...action.profile}
       };
     case SET_STATUS:
       return {

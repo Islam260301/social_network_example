@@ -6,7 +6,6 @@ import {loginThunk} from "../../redux/reducers/auth_reducer";
 class LoginContainer extends React.Component {
 
   loginSubmit = ({email, password, rememberMe}) => {
-    debugger
     this.props.loginThunk(email, password, rememberMe)
   }
 

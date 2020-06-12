@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Header} from "./Header";
 import {connect} from "react-redux";
-import {getAuthUserDataThunk} from "../../redux/reducers/auth_reducer";
+import {getAuthUserDataThunk, logoutThunk} from "../../redux/reducers/auth_reducer";
 
 class HeaderContainer extends Component {
 
@@ -17,6 +17,7 @@ class HeaderContainer extends Component {
         email={this.props.email}
         login={this.props.login}
         logout={this.props.logoutThunk}
+        profile={this.props.profile}
       />
     )
   }
@@ -27,7 +28,8 @@ let mapStateToProps = (state) => {
     isAuth: state.auth.isAuth,
     id: state.auth.id,
     email: state.auth.email,
-    login: state.auth.login
+    login: state.auth.login,
+    profile: state.profilePage.profile
   }
 }
 

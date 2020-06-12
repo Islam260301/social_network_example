@@ -39,12 +39,12 @@ export const getStatus = (userId) => {
 }
 
 export const updateStatus = (statusText) => {
-  return instance.put(`/profile/status/`, {status: statusText})
+  return instance.put(`/profile/status`, {status: statusText})
     .then(res => res.data)
 }
 
 export const loginReq = (email, password, rememberMe = false) => {
-  return instance.post(`/auth/login/`, {email, password, rememberMe})
+  return instance.post(`/auth/login`, {email, password, rememberMe})
     .then(res => res.data)
 }
 

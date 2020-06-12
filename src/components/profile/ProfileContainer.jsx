@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import {getStatusThunk, getUserProfileThunk, updateStatusThunk} from "../../redux/reducers/profile_reduser";
 import {compose} from "redux";
+import {withAuthRedirect} from "../hoc/withAuthRedirect";
 
 
 class ProfileContainer extends Component {
@@ -11,7 +12,7 @@ class ProfileContainer extends Component {
   componentDidMount() {
     let userId = this.props.match.params.userId
     if (!userId) {
-      userId = 2
+      userId = this.props.userId
     }
     this.props.getUserProfileThunk(userId)
     this.props.getStatusThunk(userId)
@@ -32,12 +33,13 @@ class ProfileContainer extends Component {
 let mapStateToProps = (state) => {
   return {
     profile: state.profilePage.profile,
-    status: state.profilePage.status
+    status: state.profilePage.status,
+    userId: state.profilePage.profile.userId
   }
 }
 
 export default compose(
   withRouter,
-  // withAuthRedirect,
+  withAuthRedirect,
   connect(mapStateToProps, {getUserProfileThunk, getStatusThunk, updateStatusThunk})
 )(ProfileContainer)
