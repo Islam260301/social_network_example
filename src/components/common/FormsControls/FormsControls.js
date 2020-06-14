@@ -1,6 +1,5 @@
 import React from "react";
 import s from "./FormControl.module.css"
-import hasError from "redux-form/lib/hasError";
 
 
 const FormControl = ({meta, ...props}) => {
@@ -9,7 +8,7 @@ const FormControl = ({meta, ...props}) => {
 
   return(
     <div className={s.formControl}>
-      <div className={hasError && "error"}>
+      <div className={hasError ? "error" : " "}>
         {props.children}
       </div>
       <div>

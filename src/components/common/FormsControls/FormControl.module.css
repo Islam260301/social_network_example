@@ -14,3 +14,20 @@
     margin: 10px 0;
 }
 
+.loginCommonError {
+    margin: 5px 0;
+    border: 3px solid #d43b3b;
+    background-color: #e5e5e5;
+    border-radius: 5px;
+    padding: 4px;
+}
+
+.loginHeader {
+    display: flex;
+    justify-content: center;
+}
+
+.loginForm div {
+    display: flex;
+    justify-content: center;
+}

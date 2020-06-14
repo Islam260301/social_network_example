@@ -6,7 +6,7 @@ import {ProfileEditStatus} from "./ProfileEditStatus";
 
 export const ProfileInfo = ({profile, status, updateStatus}) => {
 
-  if(!profile) {
+  if(!profile.userId) {
     return <Preloader/>
   }else {
     return (

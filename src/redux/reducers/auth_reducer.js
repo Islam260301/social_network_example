@@ -5,6 +5,7 @@ import {
 import {authMeReq, loginReq, logoutReq} from "../../api/api";
 import {loginAC, logoutAC, setAuthUserData, setUserProfile} from "../actions/actionCreators";
 import {getUserProfileThunk} from "./profile_reduser";
+import {stopSubmit} from "redux-form";
 
 let initialState = {
   id: null,
@@ -39,10 +40,9 @@ export const authReducer = (state = initialState, action) => {
 }
 
 export const getAuthUserDataThunk = () => (dispatch) => {
-  authMeReq().then(data => {
+  return authMeReq().then(data => {
     if (data.resultCode === 0) {
       dispatch(setAuthUserData(data.data))  // id, login, email
-      dispatch(loginAC())  // id, login, email
     }
   })
 }
@@ -50,8 +50,11 @@ export const getAuthUserDataThunk = () => (dispatch) => {
 export const loginThunk = (email, password, rememberMe) => (dispatch) => {
   loginReq(email, password, rememberMe).then(data => {
     if (data.resultCode === 0) {
+      getAuthUserDataThunk()
       dispatch(getUserProfileThunk(data.data.userId))
       dispatch(loginAC())
+    }else {
+      dispatch(stopSubmit("login", {_error: data.messages[0] || "Some error"}))
     }
   })
 }

@@ -5,19 +5,14 @@ import {getAuthUserDataThunk, logoutThunk} from "../../redux/reducers/auth_reduc
 
 class HeaderContainer extends Component {
 
-  componentDidMount() {
-    this.props.getAuthUserDataThunk()
-  }
-
   render() {
     return (
       <Header
         isAuth={this.props.isAuth}
         id={this.props.id}
         email={this.props.email}
-        login={this.props.login}
         logout={this.props.logoutThunk}
-        profile={this.props.profile}
+        userName={this.props.login}
       />
     )
   }
@@ -29,7 +24,6 @@ let mapStateToProps = (state) => {
     id: state.auth.id,
     email: state.auth.email,
     login: state.auth.login,
-    profile: state.profilePage.profile
   }
 }
 

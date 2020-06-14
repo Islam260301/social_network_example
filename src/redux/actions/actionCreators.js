@@ -1,6 +1,6 @@
 import {
   ADD_NEW_POST,
-  CHANGE_LOAD, FOLLOW_USER,
+  CHANGE_LOAD, FOLLOW_USER, INITIALIZED,
   LOGIN, LOGOUT,
   SEND_MESSAGE,
   SET_CURRENT_PAGE, SET_STATUS, SET_TOTAL_USERS_COUNT, SET_USER_DATA, SET_USER_PROFILE,
@@ -65,5 +65,9 @@ export const loginAC = (usersData) => {
 
 export const logoutAC = () => {
   return {type: LOGOUT}
+}
+
+export const initializeAppAC = () => {
+  return {type: INITIALIZED}
 }
 

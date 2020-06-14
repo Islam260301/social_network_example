@@ -52,3 +52,10 @@ export const logoutReq = () => {
   return instance.delete(`/auth/login`)
     .then(res => res.data)
 }
+
+export const captchaReq = () => {
+  return instance.get(`/security/get-captcha-url`)
+    .then(res => {
+      return res.data.url
+    })
+}

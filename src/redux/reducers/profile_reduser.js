@@ -31,7 +31,7 @@ export const profileReducer = (state= initialState, action) => {
     case SET_USER_PROFILE:
       return {
         ...state,
-        profile: {...action.profile}
+        profile: action.profile
       };
     case SET_STATUS:
       return {

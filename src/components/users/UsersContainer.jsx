@@ -54,7 +54,7 @@ let mapStateToProps = (state) => {
 }
 
 export default compose(
-  // withAuthRedirect,
+  withAuthRedirect,
   connect(mapStateToProps, {
   setUsers,
   follow,

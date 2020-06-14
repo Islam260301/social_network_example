@@ -10,7 +10,7 @@ import {withAuthRedirect} from "../hoc/withAuthRedirect";
 class ProfileContainer extends Component {
 
   componentDidMount() {
-    let userId = this.props.match.params.userId
+    let userId = this.props.match && this.props.match.params.userId
     if (!userId) {
       userId = this.props.userId
     }
@@ -21,7 +21,6 @@ class ProfileContainer extends Component {
   render() {
     return (
       <Profile
-        {...this.props}
         profile={this.props.profile}
         status={this.props.status}
         updateStatus={this.props.updateStatusThunk}

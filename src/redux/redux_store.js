@@ -7,6 +7,7 @@ import {usersReducer} from "./reducers/users_reducer";
 import {authReducer} from "./reducers/auth_reducer";
 import thunk from 'redux-thunk';
 import {reducer as formReducer} from "redux-form";
+import {appReducer} from "./reducers/app_reducer";
 
 let rootReduсer = combineReducers({
   profilePage: profileReducer,
@@ -14,7 +15,8 @@ let rootReduсer = combineReducers({
   sidebarPage: sidebarReducer,
   usersPage: usersReducer,
   auth: authReducer,
-  form: formReducer
+  form: formReducer,
+  app: appReducer,
 })
 
 const composeEnhancers = composeWithDevTools(applyMiddleware(thunk));

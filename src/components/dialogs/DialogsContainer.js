@@ -15,6 +15,7 @@ class DialogsContainer extends React.Component {
   }
 
   render() {
+
     return (
       <Dialogs
         sendMessage={this.sendMessage}

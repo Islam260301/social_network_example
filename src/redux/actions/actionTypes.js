@@ -13,5 +13,6 @@ export const SET_STATUS = "SET_STATUS";
 export const UPDATE_STATUS = "UPDATE_STATUS";
 export const LOGIN = "LOGIN";
 export const LOGOUT = "LOGOUT";
+export const INITIALIZED = "INITIALIZED";
 
 
