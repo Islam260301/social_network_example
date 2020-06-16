@@ -23,16 +23,23 @@ let initialState = {
   totalUsersCount: 0,
   currentPage: 1,
   inProgress: false,
-  isFollowing: false
+  isFollowing: false,
+  fake: ""
 }
 
 export const usersReducer = (state = initialState, action) => {
-
+  console.log(action)
   switch (action.type) {
     case FOLLOW_USER:
       return {
         ...state
       }
+    case "FAKE":
+      return {
+        ...state,
+        fake: state.fake + "q"
+      }
+
     case UNFOLLOW_USER:
       return {
         ...state

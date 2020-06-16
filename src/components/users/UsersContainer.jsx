@@ -13,12 +13,12 @@ import {compose} from "redux";
 import {withAuthRedirect} from "../hoc/withAuthRedirect";
 import {
   getCurrentPage,
-  getTotalUsersCount,
-  getUsers,
-  getUsersPageSize,
+  getTotalUsersCount, getUsers,
+  getUsersPageSize, getUsersSelector,
   userIsFollowing,
   userPageIsInProgress
 } from "../../redux/selectors/userSelectors";
+import {store} from "../../redux/redux_store";
 
 class UsersContainer extends React.Component {
 
@@ -32,6 +32,7 @@ class UsersContainer extends React.Component {
   }
 
   render() {
+
     return (
       <div>
         <Users
@@ -52,6 +53,7 @@ class UsersContainer extends React.Component {
 }
 
 let mapStateToProps = (state) => {
+
   return {
     users: getUsers(state),
     pageSize: getUsersPageSize(state),
