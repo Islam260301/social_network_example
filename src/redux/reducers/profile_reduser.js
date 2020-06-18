@@ -1,5 +1,5 @@
 import {ADD_NEW_POST, SET_STATUS, SET_USER_PROFILE} from "../actions/actionTypes";
-import {getProfileReq, getStatus, updateStatus} from "../../api/api";
+import {getProfileReq, getStatus, updateStatusReq} from "../../api/api";
 import {setStatus, setUserProfile, updateStatusAC} from "../actions/actionCreators";
 
 let initialState = {
@@ -57,7 +57,7 @@ export const getStatusThunk = (userId) => (dispatch) => {
 }
 
 export const updateStatusThunk = (statusText) => (dispatch) => {
-  updateStatus(statusText).then(data => {
+  updateStatusThunk(statusText).then(data => {
     dispatch(updateStatusAC(data))
   })
 }

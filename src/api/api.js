@@ -38,7 +38,7 @@ export const getStatus = (userId) => {
     .then(res => res.data)
 }
 
-export const updateStatus = (statusText) => {
+export const updateStatusReq = (statusText) => {
   return instance.put(`/profile/status`, {status: statusText})
     .then(res => res.data)
 }

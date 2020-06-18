@@ -2,7 +2,7 @@ import React from 'react';
 import s from './ProfileInfo.module.css';
 import {Preloader} from "../../common/preloader/Preloader";
 import avatar from '../../../assets/img/avatar.png'
-import {ProfileEditStatus} from "./ProfileEditStatus";
+import {ProfileEditStatusFN} from "./ProfileEditStatusFN";
 
 export const ProfileInfo = ({profile, status, updateStatus}) => {
 
@@ -16,7 +16,7 @@ export const ProfileInfo = ({profile, status, updateStatus}) => {
         </div>
         <h4><b>{profile.fullName}</b></h4>
         <div>{profile.aboutMe}</div>4
-        <ProfileEditStatus status={status} updateStatus={updateStatus}/>
+        <ProfileEditStatusFN status={status} updateStatus={updateStatus}/>
         <p>lookingForAJob: {profile.lookingForAJob.toString()}</p>
         <p><em>{profile.lookingForAJobDescription}</em></p>
         <hr/>
